@@ -34,11 +34,11 @@ incertitude_grandeur2 =                         # Estimation de l'incertitude-ty
 #%% Préparation des listes avec incertitudes
 
 Grandeur1 = []
-for k in range(len(hauteur_chute)):
+for k in range(len(grandeur1)):
     Grandeur1.append([grandeur1[k], incertitude_grandeur1])            # Remplit une liste de listes contenant les valeurs mesurées de la grandeur 1e assorties de leur incertitude 
     
 Grandeur2  = []
-for k in range(len(duree_chute)):
+for k in range(len(grandeur2)):
     Grandeur2.append([(grandeur2[k]), incertitude_grandeur2])           # Remplit une liste de listes contenant les valeurs mesurées de la grandeur 2 assorties de leur incertitude 
     
 #%% Méthode de Monte Carlo pour déterminer les incertitudes sur la pente et l'ordonnée à l'origine de la régression linéaire
@@ -51,15 +51,15 @@ iterations = 100000     # Nombre d'essais de la simulation
 for i in range(iterations):
     
 
-    Alea_ordonnée = []          # Crée une liste vide pour stocker les valeurs de la grandeur à porter en ordonnée issues de la simulation
+    Alea_ordonnee = []          # Crée une liste vide pour stocker les valeurs de la grandeur à porter en ordonnée issues de la simulation
     Alea_abscisse = []            # Crée une liste vide pour stocker les valeurs de la grandeur à porter en abscisse issues de la simulation
     
     for k in range(len(grandeur1)):
        
-        Alea_ordonnée.append()                                   # Remplit la liste Alea_ordonnée avec len(grandeur1) valeurs tirées au hasard (loi normale) de la grandeur à porter en ordonnée du graphe de régression
+        Alea_ordonnee.append()                                   # Remplit la liste Alea_ordonnée avec len(grandeur1) valeurs tirées au hasard (loi normale) de la grandeur à porter en ordonnée du graphe de régression
         Alea_abscisse.append()                                    # Remplit la liste  Alea_abscisse avec avec len(grandeur1) valeurs tirées au hasard (loi normale) de la grandeur à porter en abscisse du graphe de régression
-    Pente = RegLin(np.array(Alea_abscisse),np.array(Alea_ordonnée))[0]              # Calcule la pente de la droite de régression pour chaque itération
-    OrdOr = RegLin(np.array(Alea_abscisse),np.array(Alea_ordonnée))[1]              # Calcule l'ordonnée à l'origine de la droite de régression pour chaque itération
+    Pente = RegLin(np.array(Alea_abscisse),np.array(Alea_ordonnee))[0]              # Calcule la pente de la droite de régression pour chaque itération
+    OrdOr = RegLin(np.array(Alea_abscisse),np.array(Alea_ordonnee))[1]              # Calcule l'ordonnée à l'origine de la droite de régression pour chaque itération
     LPente.append(Pente)                                                                    # Remplit la liste LPente avec les valeurs calculées de la pente de la droite de régression pour chaque itération
     LOrdor.append(OrdOr)                                                                    # Remplit la liste LOrdor avec les valeurs calculées de l'ordonnée à l'origine de la droite de régression pour chaque itération
     
